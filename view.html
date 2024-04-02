@@ -1,0 +1,62 @@
+
+mysql> create table view(roll_no varchar(20),name varchar(20),dept varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into view values(1,'anu','mca');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into view values(2,'ajay','cs');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into view values(3,'manu','eee');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into view values(4,'ammu','civil');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from view;
++---------+------+-------+
+| roll_no | name | dept  |
++---------+------+-------+
+| 1       | anu  | mca   |
+| 2       | ajay | cs    |
+| 3       | manu | eee   |
+| 4       | ammu | civil |
++---------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc view;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | varchar(20) | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| dept    | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+mysql> create view studentview as select roll_no,name from view;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from view;
++---------+------+-------+
+| roll_no | name | dept  |
++---------+------+-------+
+| 1       | anu  | mca   |
+| 2       | ajay | cs    |
+| 3       | manu | eee   |
+| 4       | ammu | civil |
++---------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from studentview;
++---------+------+
+| roll_no | name |
++---------+------+
+| 1       | anu  |
+| 2       | ajay |
+| 3       | manu |
+| 4       | ammu |
++---------+------+
+4 rows in set (0.00 sec)
+
+mysql>
