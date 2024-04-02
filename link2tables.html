@@ -1,0 +1,135 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database diya;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use diya;
+Database changed
+mysql> create table demo(order_id varchar(15),order_name varchar(15),customer_id varchar(15),customer_name varchar(10),o
+rder_date varchar(15));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into diya values("1","brush","12","minu","2024-3-18");
+ERROR 1146 (42S02): Table 'diya.diya' doesn't exist
+mysql> insert into demo values("1","brush","12","liya","2024-3-14");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into demo values("2","bat","15","priya","2024-3-15");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into demo values("3","hat","18","miya","2024-3-16");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into demo values("4","book","19","tiya","2024-3-17");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into demo values("5","pen","123","sana","2024-3-18");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from demo;
++----------+------------+-------------+---------------+------------+
+| order_id | order_name | customer_id | customer_name | order_date |
++----------+------------+-------------+---------------+------------+
+| 1        | brush      | 12          | liya          | 2024-3-14  |
+| 2        | bat        | 15          | priya         | 2024-3-15  |
+| 3        | hat        | 18          | miya          | 2024-3-16  |
+| 4        | book       | 19          | tiya          | 2024-3-17  |
+| 5        | pen        | 123         | sana          | 2024-3-18  |
++----------+------------+-------------+---------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table product(product_id varchar(15),product_name varchar(20),order_id varchar(15));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into product values("6","mouse","1");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values("7","cpu","2");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values("8","keyboard","3");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values("9","ups","4");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values("10","pencil","5");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from product;
++------------+--------------+----------+
+| product_id | product_name | order_id |
++------------+--------------+----------+
+| 6          | mouse        | 1        |
+| 7          | cpu          | 2        |
+| 8          | keyboard     | 3        |
+| 9          | ups          | 4        |
+| 10         | pencil       | 5        |
++------------+--------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select demo.order_id,demo.order_name,demo.customer_id,demo.customer_name,demo.order_date,product.product_id,product.product_name,product.order_id from demo join product on demo.order_id=product.order_id;
++----------+------------+-------------+---------------+------------+------------+--------------+----------+
+| order_id | order_name | customer_id | customer_name | order_date | product_id | product_name | order_id |
++----------+------------+-------------+---------------+------------+------------+--------------+----------+
+| 1        | brush      | 12          | liya          | 2024-3-14  | 6          | mouse        | 1        |
+| 2        | bat        | 15          | priya         | 2024-3-15  | 7          | cpu          | 2        |
+| 3        | hat        | 18          | miya          | 2024-3-16  | 8          | keyboard     | 3        |
+| 4        | book       | 19          | tiya          | 2024-3-17  | 9          | ups          | 4        |
+| 5        | pen        | 123         | sana          | 2024-3-18  | 10         | pencil       | 5        |
++----------+------------+-------------+---------------+------------+------------+--------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| diya               |
+| exp1               |
+| first              |
+| fst                |
+| information_schema |
+| mysql              |
+| new                |
+| performance_schema |
+| sample             |
+| shahana            |
+| sys                |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use diya;
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_diya |
++----------------+
+| demo           |
+| product        |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from demo;
++----------+------------+-------------+---------------+------------+
+| order_id | order_name | customer_id | customer_name | order_date |
++----------+------------+-------------+---------------+------------+
+| 1        | brush      | 12          | liya          | 2024-3-14  |
+| 2        | bat        | 15          | priya         | 2024-3-15  |
+| 3        | hat        | 18          | miya          | 2024-3-16  |
+| 4        | book       | 19          | tiya          | 2024-3-17  |
+| 5        | pen        | 123         | sana          | 2024-3-18  |
++----------+------------+-------------+---------------+------------+
+5 rows in set (0.00 sec)
+
+mysql>
