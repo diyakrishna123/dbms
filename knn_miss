@@ -1,0 +1,41 @@
+import pandas as pd
+df=pd.read_csv('diabetes.csv')
+x=df.iloc[:,0:8]
+y=df.iloc[:,8]
+# df.head()
+# print(x)
+# print("target values \n",y)
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+
+from sklearn.neighbors import KNeighborsClassifier
+k=3
+knn=KNeighborsClassifier(n_neighbors=k)
+knn.fit(x_train,y_train)
+y_pred=knn.predict(x_test)
+# print(y_pred)
+
+from sklearn.metrics import accuracy_score
+acc=accuracy_score(y_test,y_pred)
+print(acc)
+
+
+# from sklearn.datasets import load_diabetes
+
+# print(a)
+
+import numpy as np
+new=[12.5,25.2,45.3,78.2,36.2,63.12,78.2,45.7]
+# print("enter b feature values for the new data point:")
+# for i in range(8):
+#     value=float(input(f"feature {i+1}: "))
+#     new.append(value)
+new=np.array(new).reshape(1, -1)
+# print(new)
+yn=knn.predict(new)
+print(f'prediction for new data points:',yn)
+if yn== 0:
+    print('no diabetic')
+else:
+    print('diabetic')
